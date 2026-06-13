@@ -13,7 +13,7 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: v0.3.0  # Zephyr Mainをやめた
+      revision: 4f7a8ae6436577cd64c9ea9ee25a6e959fc2c275
       clone-depth: 1
       import:
         file: app/west.yml
