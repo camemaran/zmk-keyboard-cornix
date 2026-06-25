@@ -189,9 +189,9 @@
 
             bindings = <
 &kp TAB         &kp Q   &kp W     &kp E  &kp R     &kp T                          &kp Y      &kp U    &kp I         &kp O       &kp P         &kp ESC
-&ng LCTRL       &kp A   &kp S     &kp D  &kp F     &kp G                          &kp H      &kp J    &kp K         &kp L       &kp JP_MINUS  &kp JP_AT
+&ng LCTRL       &kp A   &kp S     &kp D  &kp F     &kp G                          &kp H      &kp J    &kp K         &kp L       &kp JP_MINUS  &kp ENTER
 &td_shift_caps  &kp Z   &kp X     &kp C  &kp V     &kp B   &kp C_MUTE  &none      &kp N      &kp M    &kp JP_COMMA  &kp JP_DOT  &kp UP        &kp RSHFT
-&mo 1           &mo 2   &ng LGUI         &kp LALT  &kp F2  &kp SPACE   &kp ENTER  &kp BSPC   &kp DEL                &kp LEFT    &kp DOWN      &kp RIGHT
+&mo 1           &mo 2   &ng LGUI         &kp LALT  &kp F2  &kp SPACE   &kp SPACE  &kp BSPC   &kp DEL                &kp LEFT    &kp DOWN      &kp RIGHT
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
@@ -242,9 +242,9 @@
 
             bindings = <
 &trans          &ng Q  &ng W     &ng E  &ng R     &ng T                             &ng Y     &ng U    &ng I      &ng O     &ng P     &trans
-&ng LCTRL       &ng A  &ng S     &ng D  &ng F     &ng G                             &ng H     &ng J    &ng K      &ng L     &ng MINUS &trans
+&ng LCTRL       &ng A  &ng S     &ng D  &ng F     &ng G                             &ng H     &ng J    &ng K      &ng L     &ng MINUS &kp ENTER
 &td_shift_caps  &ng Z  &ng X     &ng C  &ng V     &ng B      &kp C_MUTE  &none      &ng N     &ng M    &ng COMMA  &ng DOT   &trans    &kp RSHFT
-&mo 1           &mo 2  &ng LGUI         &kp LALT  &trans     &ng SPACE   &ng ENTER  &kp BSPC  &kp DEL             &trans    &trans    &trans
+&mo 1           &mo 2  &ng LGUI         &kp LALT  &trans     &ng SPACE   &ng SPACE  &kp BSPC  &kp DEL             &trans    &trans    &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
