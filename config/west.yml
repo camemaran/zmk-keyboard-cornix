@@ -23,7 +23,7 @@ manifest:
       remote: camemaran
       revision: main
       clone-depth: 1
-      # trigger rebuild
+     # updated
     - name: zmk-helpers
       remote: urob
       revision: main
