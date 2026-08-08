@@ -23,7 +23,8 @@ manifest:
       remote: camemaran
       revision: space-timing
       clone-depth: 1
-     # updated16
+     # updated17
+     
     - name: zmk-helpers
       remote: urob
       revision: main
