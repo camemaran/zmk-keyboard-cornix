@@ -23,7 +23,7 @@ manifest:
       remote: camemaran
       revision: Douji-set
       clone-depth: 1
-     # updated101
+     # updated102
     
      
     - name: zmk-helpers
