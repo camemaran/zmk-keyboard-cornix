@@ -21,7 +21,7 @@ manifest:
         file: app/west.yml
     - name: zmk-naginata
       remote: camemaran
-      revision: main
+      revision: Douji-set
       clone-depth: 1
      # updated100
     
