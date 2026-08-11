@@ -23,7 +23,7 @@ manifest:
       remote: camemaran
       revision: main
       clone-depth: 1
-     # updated21
+     # updated22
     
      
     - name: zmk-helpers
