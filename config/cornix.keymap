@@ -165,30 +165,6 @@
             retro-tap;
         };
 
-        // ★Raise / TAB 用（長押し・単押し維持＋1文字目消え対策タイマー）
-        mt_tab_l2: mt_tab_l2 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            bindings = <&mo>, <&kp>;
-            flavor = "hold-preferred"; 
-            tapping-term-ms = <250>;
-            quick-tap-ms = <200>;              // これでTABの連打を快適に維持！
-            require-prior-idle-ms = <125>;     // 文字入力の直後125msはホールド判定を無効化して1文字目消えを阻止
-            retro-tap;
-        };
-
-        // ★Lower / BSPC 用（長押し・単押し維持＋1文字目消え対策タイマー）
-        mt_del_l1: mt_del_l1 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            bindings = <&mo>, <&kp>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <250>;
-            quick-tap-ms = <200>;              // これでBSPCの連打を快適に維持！
-            require-prior-idle-ms = <125>;     // 文字入力の直後125msはホールド判定を無効化して1文字目消えを阻止
-            retro-tap;
-        };
-
         // ★Command / DEL 用
         mt_ret_cmd: mt_ret_cmd {
             compatible = "zmk,behavior-hold-tap";
