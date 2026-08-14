@@ -280,7 +280,7 @@
 &trans    &ng Q     &ng W     &ng E     &ng R        &ng T                          &ng Y  &ng U  &ng I  &ng O  &ng P  &trans
 &trans    &ng A  &ng S  &ng D  &ng F    &ng G                             &ng H      &ng J    &ng K      &ng L     &ng MINUS &trans
 &trans    &ng Z  &ng X   &ng C  &ng V  &ng B      &kp C_MUTE  &none      &ng N      &ng M    &ng COMMA  &ng DOT   &kp UP    &trans
-&ng_l4 4 0  &kp LALT  &kp LGUI  &mt_esc_ctrl LCTRL ESC  &ng SPACE  &mt_tab_l2 2 TAB  &mt_del_l1 1 BSPC  &ng SPACE  &mt_ret_cmd LGUI DEL  &kp LEFT  &kp DOWN  &kp RIGHT
+&mo 4 &kp LALT  &kp LGUI  &mt_esc_ctrl LCTRL ESC  &ng SPACE  &mt_tab_l2 2 TAB  &mt_del_l1 1 BSPC  &ng SPACE  &mt_ret_cmd LGUI DEL  &kp LEFT  &kp DOWN  &kp RIGHT
 
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
