@@ -57,25 +57,36 @@
         };
 // （既存の ng_on, ng_off などのマクロはそのまま残す）
 
-          // ⬅️ 左手：Lower（レイヤー1）用 【透明な捨て文字を1発打って、即終了】
+         // ⬅️ 左手：Lower（レイヤー1）用 【透明な捨て文字 ➡️ レイヤー1ホールド】
         macro_to_l1: macro_to_l1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &none>, <&macro_press &mo 1>; // 💡pauseを無くし、押した瞬間に処理を完結させます
+            bindings = <&macro_tap &none>,            // 透明な捨て文字を1発打つ
+                       <&macro_param_1to1>,           // ホールド状態を正しく維持するZMK公式命令
+                       <&macro_press &mo 1>,          // レイヤー1をホールド
+                       <&macro_pause_for_release>, 
+                       <&macro_release &mo 1>;        // 指が離れた瞬間に100%確実にレイヤー1を解除して戻る
         };
 
-        // ➡️ 右手：Raise（レイヤー2）用 【レイヤーを開いて、即終了】
+        // ➡️ 右手：Raise（レイヤー2）用 【レイヤー2ホールド ➡️ 強制リセット】
         macro_to_l2: macro_to_l2 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &mo 2>, <&macro_tap &ng CLEAR>; // 💡pauseを無くし、押した瞬間に処理を完結させます
+            bindings = <&macro_param_1to1>,           // ホールド状態を正しく維持するZMK公式命令
+                       <&macro_press &mo 2>,          // レイヤー2をホールド
+                       <&macro_tap &ng CLEAR>,        // 移動した直後に裏側でバッファをクリア
+                       <&macro_pause_for_release>, 
+                       <&macro_release &mo 2>;        // 指が離れた瞬間に100%確実にレイヤー2を解除して戻る
         };
 
-        // 🔝 サード（レイヤー4）用
+        // 🔝 サード（レイヤー4）用 【正常なホールド＆リリース】
         macro_to_l4: macro_to_l4 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &mo 4>;
+            bindings = <&macro_param_1to1>, 
+                       <&macro_press &mo 4>, 
+                       <&macro_pause_for_release>, 
+                       <&macro_release &mo 4>;        // 指が離れた瞬間に100%確実にサードレイヤーを解除して戻る
         };
     };
 
