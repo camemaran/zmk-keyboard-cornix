@@ -55,6 +55,28 @@
             #binding-cells = <0>;
             bindings = <&kp CAPS>;
         };
+// （既存の ng_on, ng_off などのマクロはそのまま残す）
+
+        // ★薙刀式の内部状態をクリアしながら Raise（レイヤー2）へ行くマクロ
+        macro_to_l2: macro_to_l2 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &ng CLEAR>, <&macro_press &mo 2>, <&macro_pause_for_release>, <&macro_release &mo 2>;
+        };
+
+        // ★薙刀式の内部状態をクリアしながら Lower（レイヤー1）へ行くマクロ
+        macro_to_l1: macro_to_l1 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &ng CLEAR>, <&macro_press &mo 1>, <&macro_pause_for_release>, <&macro_release &mo 1>;
+        };
+
+        // ★薙刀式の内部状態をクリアしながら サードレイヤー（レイヤー4）へ行くマクロ
+        macro_to_l4: macro_to_l4 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &ng CLEAR>, <&macro_press &mo 4>, <&macro_pause_for_release>, <&macro_release &mo 4>;
+        };
     };
 
     behaviors {
@@ -188,6 +210,62 @@
             bindings = <&mo>, <&kp>;  // タップ時は通常のキー（またはnone）を出力
         };
 
+
+// （既存の mt_esc_ctrl, mt_ret_cmd などの定義はそのまま残す）
+
+        // ★英語（Default）レイヤー専用の Raise / TAB（今まで通り完璧に動いているものを固定）
+        mt_tab_l2: mt_tab_l2 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&mo>, <&kp>;
+            flavor = "hold-preferred"; 
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            retro-tap;
+        };
+
+        // ★英語（Default）レイヤー専用の Lower / BSPC（今まで通り完璧に動いているものを固定）
+        mt_del_l1: mt_del_l1 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&mo>, <&kp>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            retro-tap;
+        };
+
+        // ★薙刀式レイヤー専用の「バッファクリア付き」Raise / TAB
+        ng_tab_l2: ng_tab_l2 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&macro_to_l2>, <&kp>; // 長押しでバッファをクリアしてレイヤー2へ
+            flavor = "hold-preferred"; 
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>; // 単押し連打（TAB連打）の快適さを維持！
+            retro-tap;
+        };
+
+        // ★薙刀式レイヤー専用の「バッファクリア付き」Lower / BSPC
+        ng_del_l1: ng_del_l1 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&macro_to_l1>, <&kp>; // 長押しでバッファをクリアしてレイヤー1へ
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>; // 単押し連打（BSPC連打）の快適さを維持！
+            retro-tap;
+        };
+
+        // ★薙刀式レイヤー専用の「バッファクリア付き」サードレイヤー切り替えキー
+        // タップ時は何も出力しない（&none）安全仕様です
+        ng_l4: ng_l4 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&macro_to_l4>, <&none>; // 長押しでバッファをクリアしてレイヤー4へ、タップは無効
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+        };
     };
 
     combos {
@@ -278,7 +356,7 @@
 &trans    &ng Q     &ng W     &ng E     &ng R        &ng T                          &ng Y  &ng U  &ng I  &ng O  &ng P  &trans
 &trans    &ng A  &ng S  &ng D  &ng F    &ng G                             &ng H      &ng J    &ng K      &ng L     &ng MINUS &trans
 &trans    &ng Z  &ng X   &ng C  &ng V  &ng B      &kp C_MUTE  &none      &ng N      &ng M    &ng COMMA  &ng DOT   &kp UP    &trans
-&mo 4  &kp LALT  &kp LGUI  &mt_esc_ctrl LCTRL ESC  &ng SPACE  &mt_tab_l2 2 TAB  &mt_del_l1 1 BSPC  &ng SPACE  &mt_ret_cmd LGUI DEL  &kp LEFT  &kp DOWN  &kp RIGHT
+&ng_l4 4 0  &kp LALT  &kp LGUI  &mt_esc_ctrl LCTRL ESC  &ng SPACE  &ng_tab_l2 2 TAB  &ng_del_l1 1 BSPC  &ng SPACE  &mt_ret_cmd LGUI DEL  &kp LEFT  &kp DOWN  &kp RIGHT
   
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
