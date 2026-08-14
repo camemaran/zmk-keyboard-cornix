@@ -57,25 +57,25 @@
         };
 // （既存の ng_on, ng_off などのマクロはそのまま残す）
 
-        // ★薙刀式の内部状態をクリアしながら Raise（レイヤー2）へ行くマクロ
-        macro_to_l2: macro_to_l2 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_tap &ng CLEAR>, <&macro_press &mo 2>, <&macro_pause_for_release>, <&macro_release &mo 2>;
-        };
-
-        // ★薙刀式の内部状態をクリアしながら Lower（レイヤー1）へ行くマクロ
+          // ⬅️ 左手：Lower（レイヤー1）用 【透明な捨て文字を1発打って、即終了】
         macro_to_l1: macro_to_l1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &ng CLEAR>, <&macro_press &mo 1>, <&macro_pause_for_release>, <&macro_release &mo 1>;
+            bindings = <&macro_tap &none>, <&macro_press &mo 1>; // 💡pauseを無くし、押した瞬間に処理を完結させます
         };
 
-        // ★薙刀式の内部状態をクリアしながら サードレイヤー（レイヤー4）へ行くマクロ
+        // ➡️ 右手：Raise（レイヤー2）用 【レイヤーを開いて、即終了】
+        macro_to_l2: macro_to_l2 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &mo 2>, <&macro_tap &ng CLEAR>; // 💡pauseを無くし、押した瞬間に処理を完結させます
+        };
+
+        // 🔝 サード（レイヤー4）用
         macro_to_l4: macro_to_l4 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_tap &ng CLEAR>, <&macro_press &mo 4>, <&macro_pause_for_release>, <&macro_release &mo 4>;
+            bindings = <&macro_press &mo 4>;
         };
     };
 
