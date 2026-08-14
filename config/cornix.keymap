@@ -259,6 +259,7 @@
 &trans       &kp LEFT      &kp DOWN        &kp UP        &kp RIGHT      &kp PLUS                         &kp EXCL        &kp QMARK       &kp AMPS        &kp PRCNT       &kp MINUS    &trans
 &trans  &kp HOME      &kp PG_DN       &kp PG_UP     &kp END        &kp EQUAL    &kp C_MUTE  &none   &kp UNDER    &kp AT       &kp HASH     &kp TILDE    &kp UP          &trans
 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+            >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
