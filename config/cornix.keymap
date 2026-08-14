@@ -50,23 +50,16 @@
             #binding-cells = <0>;
             bindings = <&macro_tap &kp LANGUAGE_2 &kp INTERNATIONAL_5 &to 0>;
         };
-        macro_caps: macro_caps {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp CAPS>;
-        };
-    // （※既存の ng_on, ng_off などはそのまま残します）
 
-        // 純粋に透明な捨て文字（&none）を1発タップするだけの安全なマクロ
+        // 🌸 捨て文字用の安全な透明マクロ
         macro_none_tap: macro_none_tap {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&macro_tap &none>;
         };
-
     };
 
-    behaviors {
+        behaviors {
         td_shift_caps: tap_dance {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -131,7 +124,6 @@
             quick-tap-ms = <200>;
         };
 
-        // ★標準のレイヤータップ（1文字目が消える対策として hold-preferred を維持）
         lt: layer_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -141,7 +133,6 @@
             quick-tap-ms = <200>;
         };
         
-        // ★Control / ESC 用
         mt_esc_ctrl: mt_esc_ctrl {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -152,7 +143,6 @@
             retro-tap;
         };
 
-        // ★Command / DEL 用
         mt_ret_cmd: mt_ret_cmd {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -163,21 +153,14 @@
             retro-tap;
         };
 
-                // ★ mo_capsを削除し、これを新しく追記
-        // レイヤー4用（ホールド優先で1文字目消え対策を適用したシンプルなLayer-Tap）
         lt_l4: lt_l4 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "hold-preferred";
-            tapping-term-ms = <250>;  // タイミング安定のため250msに統一
-            bindings = <&mo>, <&kp>;  // タップ時は通常のキー（またはnone）を出力
+            tapping-term-ms = <250>;
+            bindings = <&mo>, <&kp>;
         };
 
-
-    behaviors {
-        // （※ここより上にある mt_esc_ctrl や mt_ret_cmd などはそのまま残してください）
-
-        // 🖥️ 英語（Default）レイヤー専用：今まで通り完璧に動いているものを固定
         mt_tab_l2: mt_tab_l2 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -198,28 +181,25 @@
             retro-tap;
         };
 
-        // 🌸 薙刀式レイヤー専用：⭐「ホールド中に、裏で透明な捨て文字を自動発射する」公式の安全な実装
-        // ホールド側（長押し）にレイヤー(&mo)、タップ側（単押し）に上記の透明マクロを指定する構造です
         ng_tab_l2: ng_tab_l2 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            bindings = <&mo>, <&macro_none_tap>; // 💡長押しで即レイヤー2へ、単押しで透明マクロが動く！
+            bindings = <&mo>, <&macro_none_tap>;
             flavor = "hold-preferred"; 
             tapping-term-ms = <200>;
-            quick-tap-ms = <200>;              // TABの快適な連打を維持！
+            quick-tap-ms = <200>;
             retro-tap;
         };
 
         ng_del_l1: ng_del_l1 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            bindings = <&mo>, <&macro_none_tap>; // 💡長押しで即レイヤー1へ、単押しで透明マクロが動く！
+            bindings = <&mo>, <&macro_none_tap>;
             flavor = "hold-preferred";
             tapping-term-ms = <200>;
-            quick-tap-ms = <200>;              // BSPCの快適な連打を維持！
+            quick-tap-ms = <200>;
             retro-tap;
         };
-
     };
 
     combos {
