@@ -286,12 +286,12 @@
             // Note: Arrow keys are set to &trans so that holding MO(1) (Lower)
             // will surface HOME/END/PG_UP/PG_DN from Layer 1.
 
-            bindings = <
+             bindings = <
 &trans    &ng Q     &ng W     &ng E     &ng R        &ng T                          &ng Y  &ng U  &ng I  &ng O  &ng P  &trans
 &trans    &ng A  &ng S  &ng D  &ng F    &ng G                             &ng H      &ng J    &ng K      &ng L     &ng MINUS &trans
 &trans    &ng Z  &ng X   &ng C  &ng V  &ng B      &kp C_MUTE  &none      &ng N      &ng M    &ng COMMA  &ng DOT   &kp UP    &trans
-&mo 4 &kp LALT  &kp LGUI  &mt_esc_ctrl LCTRL ESC  &ng SPACE  &ng_tab_l2 2 0  &ng_del_l1 1 0 BSPC  &ng SPACE  &mt_ret_cmd LGUI DEL  &kp LEFT  &kp DOWN  &kp RIGHT
-
+// ⭕【5番目と8番目が ng SPACE である、あなたが指定した大正解の並び順です】
+&mo 4  &kp LALT  &kp LGUI  &mt_esc_ctrl LCTRL ESC  &ng SPACE  &ng_tab_l2 2 0    &trans    &ng SPACE    &ng_del_l1 1 0    &mt_ret_cmd LGUI DEL    &trans    &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
@@ -302,13 +302,22 @@
 &trans         &kp C_BRI_DN   &kp C_BRI_UP    &kp C_AC_DESKTOP_SHOW_ALL_WINDOWS   &kp C_AC_SEARCH    &kp SQT                          &kp CARET  &kp N7   &kp N8   &kp N9   &kp CAPS      &trans
 &trans       &kp C_PREV     &kp C_PP        &kp C_NEXT                          &trans             &kp DQT                          &kp PIPE   &kp N4   &kp N5   &kp N6   &trans       &trans
 &trans  &bt BT_SEL 0   &bt BT_SEL 1    &bt BT_SEL 2                        &bt BT_CLR         &kp GRAVE  &kp C_MUTE  &none     &kp N0     &kp N1   &kp N2   &kp N3   &kp UP        &trans
+// 💎 親指行のマス目のカウントを、ベースレイヤーおよび薙刀式レイヤーと100%完全に一致させました
 &trans  &trans  &trans  &trans  &kp SPACE  &trans  &trans  &kp SPACE  &trans  &trans  &trans  &trans
-
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
+
+        // エラーの原因になっていた不完全な extra2 ブロックは、ZMKの正しい「予約レイヤー」の文法に修正しました
         extra2 {
+            display-name = "Reserved";
             status = "reserved";
+            bindings = <
+&trans &trans &trans &trans &trans &trans                  &trans &trans &trans &trans &trans &trans
+&trans &trans &trans &trans &trans &trans                  &trans &trans &trans &trans &trans &trans
+&trans &trans &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans &trans &trans
+&trans &trans &trans &trans &trans &trans                  &trans &trans &trans &trans &trans &trans
+            >;
         };
     };
 };
