@@ -219,7 +219,7 @@
 &kp BSPC   &kp KP_N7  &kp KP_N8  &kp KP_N9      &kp KP_PLUS    &kp KP_ASTERISK                     &kp AT       &kp TILDE                &kp HASH    &kp PIPE   &kp GRAVE   &trans
 &kp COMMA  &kp KP_N4  &kp KP_N5  &kp KP_N6      &kp KP_MINUS   &kp KP_SLASH                        &kp EXCL     &kp QMARK                &kp AMPS    &kp SQT    &kp DQT     &trans
 &kp KP_N0  &kp KP_N1  &kp KP_N2  &kp KP_N3      &kp KP_DOT     &kp KP_EQUAL   &kp C_MUTE  &none    &kp COLON    &kp SEMI                 &kp PRCNT   &kp CARET  &kp UP      &trans
-&kp TAB    &kp LEFT   &kp RIGHT  &mo 2   &mt_esc_ctrl LCTRL TAB   &kp SPACE                   &kp SPAC  &kp DEL  &kp C_AC_DESKTOP_SHOW_ALL_WINDOWS    &kp LEFT  &kp DOWN    &trans
+&kp TAB    &kp LEFT   &kp RIGHT  &mo 2   &mt_esc_ctrl LCTRL TAB   &kp SPACE                 &kp SPACE  &kp DEL  &kp C_AC_DESKTOP_SHOW_ALL_WINDOWS    &kp LEFT   &kp DOWN    &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
