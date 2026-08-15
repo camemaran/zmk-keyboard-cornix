@@ -208,7 +208,7 @@
 &trans  &kp LT         &kp GT         &kp LPAR       &kp RPAR            &kp KP_EQUAL                 &kp INTERNATIONAL_6  &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp COMMA    &trans
 &trans  &kp LBRC       &kp RBRC       &kp LBKT       &kp RBKT            &kp KP_SLASH                        &kp KP_MINUS  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_DOT   &trans
 &trans  &kp LG(LS(N3)) &kp LG(LS(N4)) &kp LG(LS(N5)) &kp KP_MULTIPLY &kp KP_ASTERISK     &kp C_MUTE  &none  &kp KP_PLUS   &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_N0    &trans
-&trans  &trans         &trans         &kp esc        &trans              &trans                              &trans        &trans     &trans     &trans     &trans       &trans
+&trans  &trans         &trans         &kp esc        &trans              &trans                             &trans        &trans     &trans     &trans     &trans       &trans
 
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
