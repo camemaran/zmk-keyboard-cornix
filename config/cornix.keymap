@@ -146,51 +146,26 @@
             retro-tap;
         };
 
-        lt_l4: lt_l4 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <250>;
-            bindings = <&mo>, <&kp>;
-        };
 
+        // ★ Raise / TAB 用（連打＆ショートカット優先の標準設定）
         mt_tab_l2: mt_tab_l2 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&mo>, <&kp>;
-            flavor = "hold-preferred"; 
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
+            flavor = "balanced";           // 割り込み入力を正確に処理し、ショートカットを確実に発動させます
+            tapping-term-ms = <200>;       // 標準的な200msに戻し、長押し時のモタつきを無くします
+            quick-tap-ms = <200>;          // ⭐これです！200ms以内のトントンという叩きは、100%確実にTAB連打になります
             retro-tap;
         };
 
+        // ★ Lower / BSPC 用（連打＆ショートカット優先の標準設定）
         mt_del_l1: mt_del_l1 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&mo>, <&kp>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            retro-tap;
-        };
-
-        ng_tab_l2: ng_tab_l2 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            bindings = <&mo>, <&macro_none_tap>;
-            flavor = "hold-preferred"; 
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            retro-tap;
-        };
-
-        ng_del_l1: ng_del_l1 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            bindings = <&mo>, <&macro_none_tap>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
+            flavor = "balanced";           // 割り込み入力を正確に処理し、ショートカットを確実に発動させます
+            tapping-term-ms = <200>;       // 標準的な200msに戻し、長押し時のモタつきを無くします
+            quick-tap-ms = <200>;          // ⭐これです！200ms以内のトントンという叩きは、100%確実にBSPC連打になります
             retro-tap;
         };
     };
@@ -215,21 +190,14 @@
     keymap {
         compatible = "zmk,keymap";
 
+         // 0. ベースレイヤー（Default）
         default_layer {
             display-name = "Base";
-
-            // -----------------------------------------------------  --------------------------------------キーマップは検討中です。図表は正しくはありません。
-            // | TAB   |  Q     |  W  |  E   |  R   |  T   |                   |  Y    |  U    |  I    |  O   |   P   |  ESC |
-            // | CTRL  |  A     |  S  |  D   |  F   |  G   |                   |  H    |  J    |  K    |  L   |   -   |  @   |
-            // | SHIFT |  Z     |  X  |  C   |  V   |  B   |  MUTE  |  |       |  N    |  M    |  ,    |  .   |   ↑   |  /   |
-            // | MO(1) |  MO(2) | GUI |      | ALT  |  F2  |  SPACE |  | ENTER |  BSPC |  DEL  |       |  ←   |   ↓   |  →   |
-
             bindings = <
 &kp TAB         &kp Q    &kp W     &kp E             &kp R      &kp T                      &kp Y      &kp U    &kp I         &kp O       &kp P         &kp BSPC
 &ng LCTRL       &kp A    &kp S     &kp D             &kp F      &kp G                              &kp H      &kp J    &kp K         &kp L       &kp MINUS  &kp ENTER
 &td_shift_caps  &kp Z    &kp X     &kp C             &kp V      &kp B                  &kp C_MUTE  &none      &kp N      &kp M    &kp JP_COMMA  &kp JP_DOT  &kp UP        &kp RSHFT
-&mo 4   &kp LALT  &kp LGUI  &mt_esc_ctrl LCTRL ESC   &kp SPACE  &mt_tab_l2 2 TAB  &mt_del_l1 1 BSPC  &kp SPACE  &mt_ret_cmd LGUI DEL  &kp LEFT  &kp DOWN  &kp RIGHT
-
+&mo 4  &kp LALT  &kp LGUI  &mt_esc_ctrl LCTRL ESC  &kp SPACE  &mt_tab_l2 2 TAB  &mt_del_l1 1 BSPC  &kp SPACE  &mt_ret_cmd LGUI DEL  &kp LEFT  &kp DOWN  &kp RIGHT
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
@@ -280,10 +248,11 @@
             // will surface HOME/END/PG_UP/PG_DN from Layer 1.
 
              bindings = <
-&trans    &ng Q     &ng W     &ng E     &ng R        &ng T                          &ng Y  &ng U  &ng I  &ng O  &ng P  &trans
-&trans    &ng A  &ng S  &ng D  &ng F    &ng G                             &ng H      &ng J    &ng K      &ng L     &ng MINUS &trans
-&trans    &ng Z  &ng X   &ng C  &ng V  &ng B      &kp C_MUTE  &none      &ng N      &ng M    &ng COMMA  &ng DOT   &kp UP    &trans
-&trans  &transT  &trans  &trans  &ng SPACE  &trans    &trans    &ng SPACE   &trans   &trans    &trans    &trans
+&trans    &ng Q  &ng W  &ng E  &ng R      &ng T                        &ng Y      &ng U    &ng I      &ng O     &ng P     &trans
+&trans    &ng A  &ng S  &ng D  &ng F      &ng G                        &ng H      &ng J    &ng K      &ng L     &ng MINUS &trans
+&trans    &ng Z  &ng X  &ng C  &ng V      &ng B  &kp C_MUTE  &none     &ng N      &ng M    &ng COMMA  &ng DOT   &kp UP    &trans
+// 5番目と8番目に ng SPACE を、それ以外をすべて透過（&trans）
+&trans    &trans &trans &trans &ng SPACE  &trans &trans      &ng SPACE &trans     &trans   &trans     &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
@@ -294,7 +263,8 @@
 &trans         &kp C_BRI_DN   &kp C_BRI_UP    &kp C_AC_DESKTOP_SHOW_ALL_WINDOWS   &kp C_AC_SEARCH    &kp SQT                          &kp CARET  &kp N7   &kp N8   &kp N9   &kp CAPS      &trans
 &trans       &kp C_PREV     &kp C_PP        &kp C_NEXT                          &kp UNDER             &kp DQT                          &kp PIPE   &kp N4   &kp N5   &kp N6   &kp RA(BSLH)       &trans
 &trans  &bt BT_SEL 0   &bt BT_SEL 1    &bt BT_SEL 2                        &bt BT_CLR         &kp GRAVE  &kp C_MUTE  &none     &kp N0     &kp N1   &kp N2   &kp N3   &kp UP        &trans
-&trans  &trans  &trans  &trans  &kp SPACE  &trans  &trans  &kp SPACE  &trans  &trans  &trans  &trans
+// 5番目と8番目に &kp SPACEに戻す
+&trans    &trans &trans &trans &kp SPACE  &trans                         &trans      &kp SPACE &trans     &trans   &trans     &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
