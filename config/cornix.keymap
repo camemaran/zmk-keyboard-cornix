@@ -4,14 +4,14 @@
 
 / {
     behaviors {
-        // 1. tap_dance（ShiftとCapsLock、および右端のMission Control用）
-        td_shift_caps: tap_dance {
+        // 1. tap_dance（★左右の配置を反転させました）
+        td_shift_caps: td_shift_caps {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp LSHFT>, <&kp CAPSLOCK>;
         };
-        td_shift_mission: tap_dance_mission {
+        td_shift_mission: td_shift_mission {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
@@ -54,6 +54,15 @@
             flavor = "balanced";
             tapping-term-ms = <200>;
         };
+
+        // 5. ★新規追加：長押し 3rdレイヤー(Layer 4) / 単押し Return
+        mt_ret_l4: mt_ret_l4 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&mo>, <&kp>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+        };
     };
 
     keymap {
@@ -63,10 +72,10 @@
         default_layer {
             display-name = "Base";
             bindings = <
-&kp TAB         &kp Q    &kp W     &kp E             &kp R      &kp T                               &kp Y      &kp U      &kp I          &kp O          &kp P         &kp BSPC
-&kp LCTRL       &kp A    &kp S     &kp D             &kp F      &kp G                               &kp H      &kp J      &kp K          &kp L          &kp MINUS     &kp ENTER
-&td_shift_caps  &kp Z    &kp X     &kp C             &kp V      &kp B          &kp C_MUTE  &none    &kp N      &kp M      &kp COMMA      &kp DOT        &kp UP        &td_shift_mission
-&mo 4           &kp LALT &kp LGUI  &mt_esc_ctrl LCTRL ESC  &mt_tab_l2 2 TAB  &kp SPACE      &kp SPACE   &mt_del_l1 1 BSPC  &mt_ret_cmd LGUI DEL &kp LEFT &kp DOWN    &kp RIGHT
+&kp TAB            &kp Q    &kp W     &kp E             &kp R      &kp T                               &kp Y      &kp U      &kp I          &kp O          &kp P         &kp BSPC
+&kp LCTRL          &kp A    &kp S     &kp D             &kp F      &kp G                               &kp H      &kp J      &kp K          &kp L          &kp MINUS     &kp ENTER
+&td_shift_mission  &kp Z    &kp X     &kp C             &kp V      &kp B          &kp C_MUTE  &none    &kp N      &kp M      &kp COMMA      &kp DOT        &kp UP        &td_shift_caps
+&mt_ret_l4 4 ENTER &kp LALT &kp LGUI  &mt_esc_ctrl LCTRL ESC  &mt_tab_l2 2 TAB  &kp SPACE      &kp SPACE   &mt_del_l1 1 BSPC  &mt_ret_cmd LGUI DEL &kp LEFT &kp DOWN    &kp RIGHT
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
