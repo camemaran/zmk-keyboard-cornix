@@ -64,10 +64,10 @@
             tapping-term-ms = <200>;
         };
 
-        // 6. ツマミ専用レイヤー移動マクロ
+        // 6. ⭕ツマミ専用レイヤー移動マクロ（ZMKの制約に合わせて #sensor-binding-cells = <0>; に完全適合させました）
         rot_to: rot_to {
             compatible = "zmk,behavior-sensor-rotate";
-            #sensor-binding-cells = <2>;
+            #sensor-binding-cells = <0>;
             bindings = <&to>, <&to>;
         };
     };
@@ -84,11 +84,11 @@
 &td_shift_mission  &kp Z    &kp X     &kp C             &kp V      &kp B          &kp C_MUTE  &none    &kp N      &kp M      &kp COMMA      &kp DOT        &kp UP        &td_shift_caps
 &mt_ret_l4 4 ENTER &kp LALT &kp LGUI  &mt_esc_ctrl LCTRL ESC  &mt_tab_l2 2 TAB  &kp SPACE      &kp SPACE   &mt_del_l1 1 BSPC  &mt_ret_cmd LGUI DEL &kp LEFT &kp DOWN    &kp RIGHT
             >;
-            // 💎 0階：左ツマミで1階と2階へ、右ツマミで4階と5階へ突入！
-            sensor-bindings = <&rot_to 1 2 &rot_to 4 5>;
+            // ⭕ あなたが完璧に整理してくださった「行き」の片道ジャンプ
+            sensor-bindings = <&to 1 &to 2 &to 4 &to 5>;
         };
 
-        // 1. Lowerレイヤー（テンキー部屋：★ご希望通りのクリーンなF1〜F12仕様）     
+        // 1. Lowerレイヤー（テンキー部屋）     
         Lower_layer {
             display-name = "Lower";
             bindings = <
@@ -97,11 +97,11 @@
 &trans  &kp F18         &kp F19         &kp F20          &kp DLLR            &kp F22        &kp C_MUTE  &none        &kp F24        &kp KP_N1  &kp KP_N2  &kp KP_N3   &kp UP        &trans
 &trans  &trans          &trans          &trans           &trans              &trans                                  &trans         &trans     &trans     &trans      &trans        &trans
             >;
-            // 左：右回しでF1、左回しで戻る ｜ 右：右回しでF7、左回しでF8の完全フリー枠！
+            // ⭕ あなたが完璧に整理してくださった「余ったツマミの自由枠（F1〜F12）」仕様
             sensor-bindings = <&inc_dec_kp LC(LS(LA(LG(F1)))) &to 0 &inc_dec_kp LC(LS(LA(LG(F7)))) LC(LS(LA(LG(F8))))>;
         };
 
-        // 2. Raiseレイヤー（記号部屋：★ご希望通りのクリーンなF1〜F12仕様）
+        // 2. Raiseレイヤー（記号部屋：★左詰め）
         Raise_layer {
             display-name = "Raise";
             bindings = <
@@ -110,7 +110,6 @@
 &trans  &kp LBRC   &kp RBRC    &kp LBKT     &kp RBKT     &kp F17        &kp C_MUTE  &none   &kp SEMI    &kp COLON    &kp SQT     &kp DQT     &kp UP       &trans
 &trans  &trans     &trans      &trans       &trans       &trans                             &trans      &trans       &trans      &trans      &trans       &trans
             >;
-            // 左：右回しで戻る、左回しでF2 ｜ 右：右回しでF9、左回しでF10の完全フリー枠！
             sensor-bindings = <&to 0 &inc_dec_kp LC(LS(LA(LG(F2)))) &inc_dec_kp LC(LS(LA(LG(F9)))) LC(LS(LA(LG(F10))))>;
         };
 
@@ -123,10 +122,10 @@
 &trans  &trans  &trans  &trans  &trans     &trans  &kp C_MUTE &none  &trans  &trans   &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans     &trans                    &trans  &trans   &trans  &trans  &trans  &trans
             >;
-            sensor-bindings = <&rot_to 1 2 &rot_to 4 5>;
+            sensor-bindings = <&to 1 &to 2 &to 4 &to 5>;
         };
 
-        // 4. システムレイヤー (3rd：★ご希望通りのクリーンなF1〜F12仕様)
+        // 4. システムレイヤー (3rd)
         third_layer {
             display-name = "3rd";
             bindings = <
@@ -135,11 +134,10 @@
 &trans  &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2    &bt BT_CLR      &none         &kp C_MUTE  &none   &kp HOME      &kp PG_DN     &kp PG_UP    &kp END         &kp UP   &trans
 &trans  &trans        &trans         &trans          &trans          &trans                            &trans        &trans        &trans       &trans          &trans   &trans
             >;
-            // 左：右回しでF3、左回しでF4 ｜ 右：右回しでF11、左回しで戻る！
             sensor-bindings = <&inc_dec_kp LC(LS(LA(LG(F3)))) LC(LS(LA(LG(F4)))) &inc_dec_kp LC(LS(LA(LG(F11)))) &to 0>;
         };
 
-        // 5. 予約レイヤー (extra2：★ご希望通りのクリーンなF1〜F12仕様)
+        // 5. 予約レイヤー (extra2)
         extra2 {
             display-name = "Extra2";
             status = "reserved";
@@ -149,7 +147,6 @@
 &trans &trans &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans &trans &trans
 &trans &trans &trans &trans &trans &trans                  &trans &trans &trans &trans &trans &trans
             >;
-            // 左：右回しでF5、左回しでF6 ｜ 右：右回しで戻る、左回しでF12！
             sensor-bindings = <&inc_dec_kp LC(LS(LA(LG(F5)))) LC(LS(LA(LG(F6)))) &to 0 &inc_dec_kp LC(LS(LA(LG(F12))))>;
         };
     };
