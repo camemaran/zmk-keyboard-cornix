@@ -68,7 +68,7 @@
     keymap {
         compatible = "zmk,keymap";
 
-        // 0. ベースレイヤー (Default)
+        // 0. ベースレイヤー (Default / 薙刀式の共通の土台部屋)
         default_layer {
             display-name = "Base";
             bindings = <
@@ -77,11 +77,11 @@
 &td_shift_mission  &kp Z    &kp X     &kp C             &kp V      &kp B          &kp C_MUTE  &none    &kp N      &kp M      &kp COMMA      &kp DOT        &kp UP        &td_shift_caps
 &mt_ret_l4 4 ENTER &kp LALT &kp LGUI  &mt_esc_ctrl LCTRL ESC  &mt_tab_l2 2 TAB  &kp SPACE      &kp SPACE   &mt_del_l1 1 BSPC  &mt_ret_cmd LGUI DEL &kp LEFT &kp DOWN    &kp RIGHT
             >;
-            // 💎 Baseツマミ：ハイパー ＋ F1/F2/F3/F4
-            sensor-bindings = <&inc_dec_kp LC(LS(LA(LG(F1)))) LC(LS(LA(LG(F2)))) &inc_dec_kp LC(LS(LA(LG(F3)))) LC(LS(LA(LG(F4))))>;
+            // 💎 0階(Base)でのツマミ：左(右回し1階 / 左回し2階) ｜ 右(右回し4階 / 左回し5階)
+            sensor-bindings = <&to 1 &to 2 &to 4 &to 5>;
         };
 
-        // 1. Lowerレイヤー（テンキー・算数部屋）     
+        // 1. Lowerレイヤー（テンキー部屋：★F,G,H,Jは元のまま維持！ツマミ左回しで0階のBaseへ帰還！）     
         Lower_layer {
             display-name = "Lower";
             bindings = <
@@ -90,11 +90,11 @@
 &trans  &kp F18         &kp F19         &kp F20          &kp DLLR            &kp F22        &kp C_MUTE  &none        &kp F24        &kp KP_N1  &kp KP_N2  &kp KP_N3   &kp UP        &trans
 &trans  &trans          &trans          &trans           &trans              &trans                                  &trans         &trans     &trans     &trans      &trans        &trans
             >;
-            // 💎 Lowerツマミ：ハイパー ＋ F5/F6/F7/F8
-            sensor-bindings = <&inc_dec_kp LC(LS(LA(LG(F5)))) LC(LS(LA(LG(F6)))) &inc_dec_kp LC(LS(LA(LG(F7)))) LC(LS(LA(LG(F8))))>;
+            // 💎 1階にいる時：左ツマミを【左（中央方向）】に回せば、一撃でBase(0)へ完全ワープ帰還！
+            sensor-bindings = <&to 1 &to 0 &to 4 &to 0>;
         };
 
-        // 2. Raiseレイヤー（★レターキーエリアをご希望通り F15, F16, F17 へ精密スライド！）
+        // 2. Raiseレイヤー（記号部屋：★左詰め・F,G,H,Jは元のまま維持！ツマミ右回しで0階のBaseへ帰還！）
         Raise_layer {
             display-name = "Raise";
             bindings = <
@@ -103,11 +103,11 @@
 &trans  &kp LBRC   &kp RBRC    &kp LBKT     &kp RBKT     &kp F17        &kp C_MUTE  &none   &kp SEMI    &kp COLON    &kp SQT     &kp DQT     &kp UP       &trans
 &trans  &trans     &trans      &trans       &trans       &trans                             &trans      &trans       &trans      &trans      &trans       &trans
             >;
-            // 💎 Raiseツマミ：ハイパー ＋ F9/F10/F11/F12
-            sensor-bindings = <&inc_dec_kp LC(LS(LA(LG(F9)))) LC(LS(LA(LG(F10)))) &inc_dec_kp LC(LS(LA(LG(F11)))) LC(LS(LA(LG(F12))))>;
+            // 💎 2階にいる時：左ツマミを【右（中央方向）】に回せば、一撃でBase(0)へ完全ワープ帰還！
+            sensor-bindings = <&to 0 &to 2 &to 4 &to 0>;
         };
 
-        // 3. 予備レイヤー (naginata)
+        // 3. 予備レイヤー (naginata_layer)
         naginata_layer {
             display-name = "Extra1";
             bindings = <
@@ -116,8 +116,7 @@
 &trans  &trans  &trans  &trans  &trans     &trans  &kp C_MUTE &none  &trans  &trans   &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans     &trans                    &trans  &trans   &trans  &trans  &trans  &trans
             >;
-            // 💎 naginataツマミ：3つ装飾 ＋ F1/F2/F3/F4
-            sensor-bindings = <&inc_dec_kp LC(LA(LG(F1))) LC(LA(LG(F2))) &inc_dec_kp LC(LA(LG(F3))) LC(LA(LG(F4)))>;
+            sensor-bindings = <&to 1 &to 2 &to 4 &to 5>;
         };
 
         // 4. システムレイヤー (3rd)
@@ -129,11 +128,11 @@
 &trans  &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2    &bt BT_CLR      &none         &kp C_MUTE  &none   &kp HOME      &kp PG_DN     &kp PG_UP    &kp END         &kp UP   &trans
 &trans  &trans        &trans         &trans          &trans          &trans                            &trans        &trans        &trans       &trans          &trans   &trans
             >;
-            // 💎 3rdツマミ：3つ装飾 ＋ F5/F6/F7/F8
-            sensor-bindings = <&inc_dec_kp LC(LA(LG(F5))) LC(LA(LG(F6))) &inc_dec_kp LC(LA(LG(F7))) LC(LA(LG(F8)))>;
+            // 💎 4階にいる時：右ツマミを【左（中央方向）】に回せば、一撃でBase(0)へ完全ワープ帰還！
+            sensor-bindings = <&to 1 &to 0 &to 4 &to 0>;
         };
 
-        // 5. 予約レイヤー
+        // 5. 予備レイヤー (extra2)
         extra2 {
             display-name = "Extra2";
             status = "reserved";
@@ -143,7 +142,8 @@
 &trans &trans &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans &trans &trans
 &trans &trans &trans &trans &trans &trans                  &trans &trans &trans &trans &trans &trans
             >;
-            sensor-bindings = <&inc_dec_kp LC(LS(LA(LG(F1)))) LC(LS(LA(LG(F2)))) &inc_dec_kp LC(LS(LA(LG(F3)))) LC(LS(LA(LG(F4))))>;
+            // 💎 5階にいる時：右ツマミを【右（中央方向）】に回せば、一撃でBase(0)へ完全ワープ帰還！
+            sensor-bindings = <&to 1 &to 0 &to 0 &to 5>;
         };
     };
 };
