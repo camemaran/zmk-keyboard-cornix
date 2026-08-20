@@ -118,7 +118,7 @@
         Lower_layer {
             display-name = "Lower";
             bindings = <
-&trans  &kp EQUAL       &kp FSLH        &kp ASTERISK     &kp MINUS           &kp PLUS                                &kp KP_MINUS   &kp KP_N7  &kp KP_N8  &kp KP_N9   &kp F21       &trans
+&trans  &kp EQUAL       &kp FSLH        &kp ASTERISK     &kp SEMI           &kp PLUS                                 &kp KP_MINUS   &kp KP_N7  &kp KP_N8  &kp KP_N9   &kp F21       &trans
 &trans  &kp KP_EQUAL    &kp KP_SLASH    &kp KP_ASTERISK  &kp KP_MINUS        &kp KP_PLUS                             &kp KP_N0      &kp KP_N4  &kp KP_N5  &kp KP_N6   &kp KP_DOT    &trans
 &trans  &kp F18         &kp F19         &kp F20          &kp DLLR            &kp F22        &kp C_MUTE  &none        &kp F24        &kp KP_N1  &kp KP_N2  &kp KP_N3   &kp UP        &trans
 &trans  &trans          &trans          &trans           &trans              &trans                                  &trans         &trans     &trans     &trans      &trans        &trans
@@ -130,7 +130,7 @@
         Raise_layer {
             display-name = "Raise";
             bindings = <
-&trans  &kp GT     &kp LT      &kp RPAR    &kp LPAR    &kp LG(LS(N3))                     &kp F23     &kp AT       &kp TILDE   &kp (LS(SEMI))  &kp COLON  &trans
+&trans  &kp GT     &kp LT      &kp RPAR    &kp LPAR    &kp LG(LS(N3))                     &kp F23     &kp AT       &kp TILDE   &kp MINUS       &kp COLON  &trans
 &trans  &kp LEFT   &kp DOWN    &kp UP      &kp RIGHT   &kp LG(LS(N4))                     &kp QMARK   &kp EXCL     &kp AMPS    &kp PRCNT       &kp HASH   &trans
 &trans  &kp RBRC   &kp LBRC    &kp RBKT    &kp LBKT    &kp LG(LS(N5))  &kp C_MUTE  &none  &kp F14     &kp F15      &kp F16     &kp F17         &kp UP     &trans
 &trans  &trans     &trans      &trans      &trans      &trans                             &trans      &trans       &trans      &trans          &trans     &trans
