@@ -130,10 +130,10 @@
         Raise_layer {
             display-name = "Raise";
             bindings = <
-&trans  &kp GT     &kp LT      &kp RPAR    &kp LPAR    &kp LG(LS(N3))                     &kp F23     &kp AT       &kp HASH    &kp TILDE   &none     &trans
-&trans  &kp LEFT   &kp DOWN    &kp UP      &kp RIGHT   &kp LG(LS(N4))                     &kp QMARK   &kp EXCL     &kp AMPS    &kp PRCNT   &kp F15   &trans
-&trans  &kp RBRC   &kp LBRC    &kp RBKT    &kp LBKT    &kp LG(LS(N5))  &kp C_MUTE  &none  &kp SEMI    &kp COLON    &kp F16     &kp F17     &kp UP    &trans
-&trans  &trans     &trans      &trans      &trans      &trans                             &trans      &trans       &trans      &trans      &trans    &trans
+&trans  &kp GT     &kp LT      &kp RPAR    &kp LPAR    &kp LG(LS(N3))                     &kp F23     &kp AT       &kp TILDE   &kp (LS(SEMI))  &kp COLON  &trans
+&trans  &kp LEFT   &kp DOWN    &kp UP      &kp RIGHT   &kp LG(LS(N4))                     &kp QMARK   &kp EXCL     &kp AMPS    &kp PRCNT       &kp HASH   &trans
+&trans  &kp RBRC   &kp LBRC    &kp RBKT    &kp LBKT    &kp LG(LS(N5))  &kp C_MUTE  &none  &kp F14     &kp F15      &kp F16     &kp F17         &kp UP     &trans
+&trans  &trans     &trans      &trans      &trans      &trans                             &trans      &trans       &trans      &trans          &trans     &trans
             >;
             sensor-bindings = <&rot_l0_l2 &inc_dec_kp LC(LS(LA(LG(F9)))) LC(LS(LA(LG(F10))))>;
         };
