@@ -64,7 +64,7 @@
             tapping-term-ms = <200>;
         };
 
-        // 6. ツマミ専用レイヤー固定移動マクロ（大成功している1クリック往復ダイヤル構文です）
+        // 6. ツマミ専用レイヤー固定移動マクロ
         rot_l1_l2: rot_l1_l2 {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
@@ -97,8 +97,7 @@
         };
     };
 
-    // 💎★大本命：上のレイヤーが固定されても、0階Baseの文字キー（F,G,H,J等）の電波を120%貫通させるためのシステム型プロパティ定義です
-    // これによりZMKの内部の壁が完全に消滅し、全部屋でのFG/HJのIME切り替えが100%無条件で開通します！
+   
     keymap {
         compatible = "zmk,keymap";
 
@@ -119,8 +118,8 @@
             display-name = "Lower";
             bindings = <
 &trans  &kp EQUAL       &kp FSLH        &kp ASTERISK     &kp SEMI           &kp PLUS                                 &kp KP_MINUS   &kp KP_N7  &kp KP_N8  &kp KP_N9   &kp F21       &trans
-&trans  &kp KP_EQUAL    &kp KP_SLASH    &kp KP_ASTERISK  &kp KP_MINUS        &kp KP_PLUS                             &kp KP_N0      &kp KP_N4  &kp KP_N5  &kp KP_N6   &kp KP_DOT    &trans
-&trans  &kp F18         &kp F19         &kp F20          &kp DLLR            &kp F22        &kp C_MUTE  &none        &kp F24        &kp KP_N1  &kp KP_N2  &kp KP_N3   &kp UP        &trans
+&trans  &kp KP_EQUAL    &kp KP_SLASH    &kp KP_ASTERISK  &kp KP_MINUS        &kp KP_PLUS                             &kp F24        &kp KP_N4  &kp KP_N5  &kp KP_N6   &kp KP_DOT    &trans
+&trans  &kp F18         &kp F19         &kp F20          &kp DLLR            &kp F22        &kp C_MUTE  &none        &kp KP_N0      &kp KP_N1  &kp KP_N2  &kp KP_N3   &kp UP        &trans
 &trans  &trans          &trans          &trans           &trans              &trans                                  &trans         &trans     &trans     &trans      &trans        &trans
             >;
             sensor-bindings = <&rot_l1_l0 &inc_dec_kp LC(LS(LA(LG(F7)))) LC(LS(LA(LG(F8))))>;
