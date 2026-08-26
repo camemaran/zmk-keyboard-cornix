@@ -4,18 +4,18 @@
 
 / {
     behaviors {
-        // 1. tap_dance（左右反転・確定版）
+        // 1. tap_dance（左右shift2 回押し mission control / CAPSLOCK）
         td_shift_caps: td_shift_caps {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp LSHFT>, <&kp CAPSLOCK>;
+            bindings = <&kp RSHFT>, <&kp CAPSLOCK>;
         };
         td_shift_mission: td_shift_mission {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp RSHFT>, <&kp C_AC_DESKTOP_SHOW_ALL_WINDOWS>;
+            bindings = <&kp LSHFT>, <&kp C_AC_DESKTOP_SHOW_ALL_WINDOWS>;
         };
 
         // 2. 長押し Control / 単押し Escape
@@ -113,7 +113,8 @@
             sensor-bindings = <&rot_l1_l2 &rot_l4_l5>;
         };
 
-        // 1. Lowerレイヤー（テンキー部屋）     
+        // 1. Lowerレイヤー（テンキー部屋）
+        // Karabiner連携用ダミーキー（未使用）&kp F14 　&kp F15 　&kp F16 　&kp F17 
         Lower_layer {
             display-name = "Lower";
             bindings = <
@@ -125,14 +126,14 @@
             sensor-bindings = <&rot_l1_l0 &inc_dec_kp LC(LS(LA(LG(F7)))) LC(LS(LA(LG(F8))))>;
         };
 
-        // 2. Raiseレイヤー（記号部屋：★左詰め）
+        // 2. Raiseレイヤー（記号部屋：★左詰め）        
         Raise_layer {
             display-name = "Raise";
             bindings = <
-&trans  &kp LT     &kp GT      &kp LPAR    &kp RPAR    &kp LG(LS(N3))                     &kp F23     &kp AT       &kp TILDE   &kp MINUS       &kp COLON  &trans
-&trans  &kp LEFT   &kp DOWN    &kp UP      &kp RIGHT   &kp LG(LS(N4))                     &kp QMARK   &kp EXCL     &kp AMPS    &kp PRCNT       &kp HASH   &trans
-&trans  &kp LBRC    &kp RBRC   &kp LBKT    &kp RBKT    &kp LG(LS(N5))  &kp C_MUTE  &none  &kp F14     &kp F15      &kp F16     &kp F17         &kp UP     &trans
-&trans  &trans     &trans      &trans      &trans      &trans                             &trans      &trans       &trans      &trans          &trans     &trans
+&trans  &kp LS(LEFT)  &kp LS(DOWN)  &kp LS(UP)   &kp LS(RIGHT)   &kp LG(LS(N3))                      &kp F23     &kp AT       &kp TILDE   &kp MINUS       &kp COLON  &trans
+&trans  &kp LEFT      &kp DOWN      &kp UP       &kp RIGHT       &kp LG(LS(N4))                      &kp QMARK   &kp EXCL     &kp AMPS    &kp PRCNT       &kp HASH   &trans
+&trans  &kp LG(LEFT)  &kp LG(DOWN)  &kp LG(UP)   &kp LG(RIGHT)   &kp LG(LS(N5))  &kp C_MUTE  &none   &kp LBKT    &kp RBKT     &kp LPAR    &kp RPAR        &kp UP     &trans
+&trans  &trans        &trans        &trans       &trans          &trans                              &trans      &trans       &trans      &trans          &trans     &trans
             >;
             sensor-bindings = <&rot_l0_l2 &inc_dec_kp LC(LS(LA(LG(F9)))) LC(LS(LA(LG(F10))))>;
         };
@@ -152,11 +153,11 @@
         // 4. システムレイヤー (3rd)
         third_layer {
             display-name = "3rd";
-            bindings = <
-&trans  &kp N1        &kp N2         &kp N3          &kp N4          &kp N5                            &kp N6        &kp N7        &kp N8       &kp N9          &kp N0   &trans
-&trans  &kp CARET     &kp GRAVE      &kp SQT         &kp DQT         &kp PIPE                          &kp LS(LEFT)  &kp LS(DOWN)  &kp LS(UP)   &kp LS(RIGHT)   &none    &trans
-&trans  &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2    &bt BT_CLR      &none         &kp C_MUTE  &none   &kp HOME      &kp PG_DN     &kp PG_UP    &kp END         &kp UP   &trans
-&trans  &trans        &trans         &trans          &trans          &trans                            &trans        &trans        &trans       &trans          &trans   &trans
+            bindings = < 
+&trans  &kp N1        &kp N2         &kp N3          &kp N4          &kp N5                         &kp N6        &kp N7        &kp N8     &kp N9    &kp N0     &trans
+&trans  &kp HOME      &kp PG_DN      &kp PG_UP       &kp END         &none                          &kp CARET     &kp GRAVE     &kp SQT    &kp DQT   &kp PIPE   &trans
+&trans  &bt BT_SEL 0  &bt BT_SEL 1   &bt BT_SEL 2    &bt BT_CLR      &none     &kp C_MUTE  &none    &kp LBRC      &kp RBRC      &kp LT     &kp GT    &kp UP     &trans
+&trans  &trans        &trans         &trans          &trans          &trans                         &trans        &trans        &trans     &trans    &trans     &trans
             >;
             sensor-bindings = <&inc_dec_kp LC(LS(LA(LG(F3)))) LC(LS(LA(LG(F4)))) &rot_l4_l0>;
         };
