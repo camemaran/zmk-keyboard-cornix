@@ -95,6 +95,28 @@
             #sensor-binding-cells = <0>;
             bindings = <&to 0>, <&to 5>;
         };
+        // 💎6. 左右交差ショートカットでのみ発動する絶対防壁ホームローモッズ
+        hm_l: hm_l {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <125>; // タイピング中はホールドを禁止して、薙刀式の同時押しを守ります
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <6 7 8 9 10 11 18 19 20 21 22 23 32 33 34 35 36 37>; // 左手モディファイアが化けていいのは、右手が押された時だけ！
+        };
+
+        hm_r: hm_r {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <125>; // タイピング中はホールドを禁止して、薙刀式の同時押しを守ります
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 26 27 28 29 30 31>; // 右手モディファイアが化けていいのは、左手が押された時だけ！
+        };
     };
 
    
@@ -105,16 +127,16 @@
         default_layer {
             display-name = "Base";
             bindings = <
-&kp TAB            &kp Q    &kp W     &kp E             &kp R      &kp T                               &kp Y      &kp U      &kp I          &kp O          &kp P         &kp BSPC
-&kp LCTRL          &kp A    &kp S     &kp D             &kp F      &kp G                               &kp H      &kp J      &kp K          &kp L          &kp MINUS     &kp ENTER
-&td_shift_mission  &kp Z    &kp X     &kp C             &kp V      &kp B          &kp C_MUTE  &none    &kp N      &kp M      &kp COMMA      &kp DOT        &kp UP        &td_shift_caps
-&mt_ret_l4 4 ENTER &kp LALT &kp LGUI  &mt_esc_ctrl LCTRL ESC  &mt_tab_l2 2 TAB  &kp SPACE      &kp SPACE   &mt_del_l1 1 BSPC  &mt_ret_cmd LGUI ENTER &kp LEFT &kp DOWN    &kp RIGHT
-            >;
+&kp TAB            &kp Q            &kp W          &kp E                   &kp R             &kp T                         &kp Y       &kp U              &kp I                  &kp O          &kp P              &kp BSPC
+&kp LCTRL          &hm_l LSHIFT A   &hm_l LGUI S   &hm_l LALT D            &hm_l LCTRL F     &kp G                         &kp H       &hm_r RCTRL J      &hm_r RALT K           &hm_r RGUI L   &hm_r RSHIFT MINUS &kp ENTER
+&td_shift_mission  &kp Z            &kp X          &kp C                   &kp V             &kp B    &kp C_MUTE  &none    &kp N       &kp M              &kp COMMA              &kp DOT        &kp UP             &td_shift_caps
+&mt_ret_l4 4 ENTER &kp LALT         &kp LGUI       &mt_esc_ctrl LCTRL ESC  &mt_tab_l2 2 TAB  &kp SPACE                     &kp SPACE   &mt_del_l1 1 BSPC  &mt_ret_cmd LGUI ENTER &kp LEFT       &kp DOWN           &kp RIGHT
+            
             sensor-bindings = <&rot_l1_l2 &rot_l4_l5>;
         };
 
         // 1. Lowerレイヤー（テンキー部屋）
-        // Karabiner連携用ダミーキー（未使用）&kp F14 　&kp F15 　&kp F16 　&kp F17 
+        // Karabiner連携用ダミーキー（未使用）&kp F14 　&kp F15 　&kp F16 　&kp F17 &kp F24 
         Lower_layer {
             display-name = "Lower";
             bindings = <
