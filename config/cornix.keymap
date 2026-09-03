@@ -123,12 +123,7 @@
     keymap {
         compatible = "zmk,keymap";
 
-        // 0. ベースレイヤー (Default / 薙刀式の共通の土台部屋)
-        default_layer {
-            display-name = "Base";
-            bindings = <
-&kp TAB            &kp Q            &kp W          &kp E                   &kp R             &kp T                         &kp Y       &kp U              &kp I                  &kp O          &kp P              &kp BSPC
-&kp LCT        // 0. ベースレイヤー (Default / 薙刀式の共通の土台部屋)
+       // 0. ベースレイヤー (Default / 薙刀式の共通の土台部屋)
         default_layer {
             display-name = "Base";
             bindings = <
