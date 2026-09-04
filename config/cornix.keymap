@@ -64,6 +64,19 @@
             tapping-term-ms = <200>;
         };
 
+        // 長押し: 通常の改行(RETURN) / 単押し: チャット内の改行(Shift + Return)
+        // 0.2秒押しっぱなしにすると通常の改行がになる
+        sr_hold_tap: sr_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-unless-interrupted";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            retro-tap; // これが、他のキーを触らずに「単発の長押し」を成立させるコマンド
+            bindings = <&kp>, <&kp>;
+        };
+
+
         // 6. ツマミ専用レイヤー固定移動マクロ
         rot_l1_l2: rot_l1_l2 {
             compatible = "zmk,behavior-sensor-rotate";
@@ -128,10 +141,10 @@
         default_layer {
             display-name = "Base";
             bindings = <
-&kp TAB            &kp Q            &kp W          &kp E                   &kp R             &kp T                         &kp Y       &kp U              &kp I                  &kp O          &kp P              &kp BSPC
-&kp LCTRL          &kp A            &kp S          &kp D                   &kp F             &kp G                         &kp H       &kp J              &kp K                  &kp L          &kp SEMI           &kp LS(ENTER)
-&td_shift_mission  &kp Z            &kp X          &kp C                   &kp V             &kp B    &kp C_MUTE  &none    &kp N       &kp M              &kp COMMA              &kp DOT        &kp UP             &td_shift_caps
-&mt_ret_l4 4 ENTER &kp LALT         &kp LGUI       &mt_esc_ctrl LCTRL ESC  &mt_tab_l2 2 TAB  &kp SPACE                     &kp SPACE   &mt_del_l1 1 BSPC  &mt_ret_cmd LGUI ENTER &kp LEFT       &kp DOWN           &kp RIGHT
+&kp TAB            &kp Q            &kp W          &kp E                   &kp R             &kp T                         &kp Y       &kp U              &kp I                  &kp O      &kp P      &kp BSPC
+&kp LCTRL          &kp A            &kp S          &kp D                   &kp F             &kp G                         &kp H       &kp J              &kp K                  &kp L      &kp SEMI   &sr_hold_tap ENTER LS(ENTER)
+&td_shift_mission  &kp Z            &kp X          &kp C                   &kp V             &kp B    &kp C_MUTE  &none    &kp N       &kp M              &kp COMMA              &kp DOT    &kp UP     &td_shift_caps
+&mt_ret_l4 4 ENTER &kp LALT         &kp LGUI       &mt_esc_ctrl LCTRL ESC  &mt_tab_l2 2 TAB  &kp SPACE                     &kp SPACE   &mt_del_l1 1 BSPC  &mt_ret_cmd LGUI ENTER &kp LEFT   &kp DOWN   &kp RIGHT
             >; 
             sensor-bindings = <&rot_l1_l2 &rot_l4_l5>;
         }; 
