@@ -153,9 +153,9 @@
         Raise_layer {
             display-name = "Raise";
             bindings = <
-&trans  &kp LS(LEFT)  &kp LS(DOWN)  &kp LS(UP)   &kp LS(RIGHT)   &kp LG(LS(N3))                      &kp LS(MINUS)  &kp AT       &kp TILDE   &kp SEMI        &kp LS(SEMI)   &trans
+&trans  &kp LG(LEFT)  &kp LG(DOWN)  &kp LG(UP)   &kp LG(RIGHT)   &kp LG(LS(N3))                      &kp LS(MINUS)  &kp AT       &kp TILDE   &kp SEMI        &kp LS(SEMI)   &trans
 &trans  &kp LEFT      &kp DOWN      &kp UP       &kp RIGHT       &kp LG(LS(N4))                      &kp QMARK      &kp EXCL     &kp AMPS    &kp PRCNT       &kp HASH       &trans
-&trans  &kp LG(LEFT)  &kp LG(DOWN)  &kp LG(UP)   &kp LG(RIGHT)   &kp LG(LS(N5))  &kp C_MUTE  &none   &kp LBKT       &kp RBKT     &kp LPAR    &kp RPAR        &kp UP         &trans
+&trans  &kp LS(LEFT)  &kp LS(DOWN)  &kp LS(UP)   &kp LS(RIGHT)   &kp LG(LS(N5))  &kp C_MUTE  &none   &kp LBKT       &kp RBKT     &kp LPAR    &kp RPAR        &kp UP         &trans
 &trans  &trans        &trans        &trans       &trans          &trans                              &trans         &trans       &trans      &trans          &trans         &trans
             >;
             sensor-bindings = <&rot_l0_l2 &inc_dec_kp LC(LS(LA(LG(F9)))) LC(LS(LA(LG(F10))))>;
