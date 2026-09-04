@@ -95,28 +95,29 @@
             #sensor-binding-cells = <0>;
             bindings = <&to 0>, <&to 5>;
         };
-        // 6. 左右交差ショートカットでのみホームローモッズ
-        hm_l: hm_l {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <125>;  // タイピング中はホールドを禁止して、薙刀式の同時押しを守ります
-            bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <6 7 8 9 10 11 18 19 20 21 22 23 32 33 34 35 36 37>; // 左手モディファイアが有効化するのは、右手が押された時だけ　
-        };
+        // 💤 未来のための保管庫：スラッシュでコメントアウトし、ZMKシステムから完全に眠らせています。
+        // 💤 再び試したくなった時は、行頭の「//」をすべて消すだけで一瞬で復活できます。
+        // hm_l: hm_l {
+        //     compatible = "zmk,behavior-hold-tap";
+        //     #binding-cells = <2>;
+        //     flavor = "balanced";
+        //     tapping-term-ms = <280>;
+        //     quick-tap-ms = <175>;
+        //     require-prior-idle-ms = <125>;
+        //     bindings = <&kp>, <&kp>;
+        //     hold-trigger-key-positions = <6 7 8 9 10 11 18 19 20 21 22 23 32 33 34 35 36 37>;
+        // };
 
-        hm_r: hm_r {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <125>; // タイピング中はホールドを禁止して、薙刀式の同時押しを守ります
-            bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 26 27 28 29 30 31>;  // 右手ディファイアが有効化するのは、左手が押された時だけ
-        };
+        // hm_r: hm_r {
+        //     compatible = "zmk,behavior-hold-tap";
+        //     #binding-cells = <2>;
+        //     flavor = "balanced";
+        //     tapping-term-ms = <280>;
+        //     quick-tap-ms = <175>;
+        //     require-prior-idle-ms = <125>;
+        //     bindings = <&kp>, <&kp>;
+        //     hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 26 27 28 29 30 31>;
+        // };
     };
 
    
@@ -128,7 +129,7 @@
             display-name = "Base";
             bindings = <
 &kp TAB            &kp Q            &kp W          &kp E                   &kp R             &kp T                         &kp Y       &kp U              &kp I                  &kp O          &kp P              &kp BSPC
-&kp LCTRL          &hm_l LCTRL A    &hm_l LALT S   &hm_l LSHIFT D          &hm_l LGUI F      &kp G                         &kp H       &hm_r RGUI J       &hm_r RSHIFT K         &hm_r RALT L   &hm_r RCTRL SEMI   &kp ENTER
+&kp LCTRL          &kp A            &kp S          &kp D                   &kp F             &kp G                         &kp H       &kp J              &kp K                  &kp L          &kp SEMI           &kp ENTER
 &td_shift_mission  &kp Z            &kp X          &kp C                   &kp V             &kp B    &kp C_MUTE  &none    &kp N       &kp M              &kp COMMA              &kp DOT        &kp UP             &td_shift_caps
 &mt_ret_l4 4 ENTER &kp LALT         &kp LGUI       &mt_esc_ctrl LCTRL ESC  &mt_tab_l2 2 TAB  &kp SPACE                     &kp SPACE   &mt_del_l1 1 BSPC  &mt_ret_cmd LGUI ENTER &kp LEFT       &kp DOWN           &kp RIGHT
             >; 
