@@ -25,6 +25,7 @@
             bindings = <&kp>, <&kp>;
             flavor = "balanced";
             tapping-term-ms = <200>;
+            quick-tap-ms = <175>; // これが2回目のタップで連打させるコードです
         };
 
         // 3. 長押し Command / 単押し ENTER
@@ -34,6 +35,7 @@
             bindings = <&kp>, <&kp>;
             flavor = "balanced";
             tapping-term-ms = <200>;
+            quick-tap-ms = <175>; // これが2回目のタップで連打させるコードです
         };
 
         // 4. レイヤー切り替え用 hold-tap
@@ -44,6 +46,7 @@
             bindings = <&mo>, <&kp>;
             flavor = "balanced";
             tapping-term-ms = <200>;
+            quick-tap-ms = <175>; // これが2回目のタップで連打させるコードです
         };
 
         // 長押し: Lower (Layer 1) / 単押し: BackSpace (BSPC)
@@ -53,6 +56,7 @@
             bindings = <&mo>, <&kp>;
             flavor = "balanced";
             tapping-term-ms = <200>;
+            quick-tap-ms = <175>; // これが2回目のタップで連打させるコードです
         };
 
         // 5. 長押し 3rdレイヤー(Layer 4) / 単押し Return
