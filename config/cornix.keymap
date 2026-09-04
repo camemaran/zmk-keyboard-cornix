@@ -67,19 +67,16 @@
             flavor = "balanced";
             tapping-term-ms = <200>;
         };
-
-        // 長押し: 通常の改行(RETURN) / 単押し: チャット内の改行(Shift + Return)
-        // 0.2秒押しっぱなしにすると通常の改行がになる
+        // 長押し: 通常の改行(ENTER) / 単押し: チャット内の改行(Shift + Enter)
         sr_hold_tap: sr_hold_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "tap-unless-interrupted";
+            flavor = "hold-preferred"; // 👈 これで、ただ長く押すだけでEnterを出す
             tapping-term-ms = <200>;
-            quick-tap-ms = <175>;
-            retro-tap; // これが、他のキーを触らずに「単発の長押し」を成立させるコマンド
+            quick-tap-ms = <0>;        // 👈 小指の予期せぬリピート暴走を完全にシャットアウトします
+            retro-tap;
             bindings = <&kp>, <&kp>;
         };
-
 
         // 6. ツマミ専用レイヤー固定移動マクロ
         rot_l1_l2: rot_l1_l2 {
