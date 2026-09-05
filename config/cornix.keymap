@@ -71,7 +71,7 @@
         sr_hold_tap: sr_hold_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "hold-preferred";// 単発の長押しタイマーでキーコードF23を発信
+            flavor = "hold-preferred"; // 単発の長押しタイマーでキーコードF23を発信
             tapping-term-ms = <200>;
             quick-tap-ms = <175>; // これが2回目のタップで連打させるコードです
         };
