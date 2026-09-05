@@ -67,16 +67,19 @@
             flavor = "balanced";
             tapping-term-ms = <200>;
         };
-        // 長押しでF23、単押しでSHIFT+ENTERを送信するホールドタップ
+
+        // 6.単押しと長押しを使い分ける
         sr_hold_tap: sr_hold_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "hold-preferred"; // 単発の長押しタイマーでキーコードF23を発信
-            tapping-term-ms = <200>;
-            quick-tap-ms = <175>; // これが2回目のタップで連打させるコードです
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>; // 👈 0.2秒長く押せば、自動で通常改行(ENTER)に変身します
+            quick-tap-ms = <175>;    // 右手小指のダブルタップ連打も完璧に効くようになります
+            bindings = <&kp>, <&kp>;
         };
 
-        // 6. ツマミ専用レイヤー固定移動マクロ
+
+        // 7. ツマミ専用レイヤー固定移動マクロ
         rot_l1_l2: rot_l1_l2 {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
@@ -141,7 +144,7 @@
             display-name = "Base";
             bindings = <
 &kp TAB            &kp Q            &kp W          &kp E                   &kp R             &kp T                         &kp Y       &kp U              &kp I                  &kp O      &kp P      &kp BSPC
-&kp LCTRL          &kp A            &kp S          &kp D                   &kp F             &kp G                         &kp H       &kp J              &kp K                  &kp L      &kp SEMI   &sr_hold_tap F23 LS(ENTER)
+&kp LCTRL          &kp A            &kp S          &kp D                   &kp F             &kp G                         &kp H       &kp J              &kp K                  &kp L      &kp SEMI   &sr_hold_tap ENTER LS(ENTER)
 &td_shift_mission  &kp Z            &kp X          &kp C                   &kp V             &kp B    &kp C_MUTE  &none    &kp N       &kp M              &kp COMMA              &kp DOT    &kp UP     &td_shift_caps
 &mt_ret_l4 4 ENTER &kp LALT         &kp LGUI       &mt_esc_ctrl LCTRL ESC  &mt_tab_l2 2 TAB  &kp SPACE                     &kp SPACE   &mt_del_l1 1 BSPC  &mt_ret_cmd LGUI ENTER &kp LEFT   &kp DOWN   &kp RIGHT
             >; 
