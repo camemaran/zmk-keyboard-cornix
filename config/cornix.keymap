@@ -172,7 +172,7 @@
 
         // 1. Lowerレイヤー（テンキー部屋）
         // Karabiner連携用ダミーキー（未使用）&kp F14 　&kp F15 　&kp F16 　&kp F17   &kp  RSHFT MINUS
-        Lower_layer 
+        Lower_layer { 
             display-name = "Lower";
             bindings = <
 &trans  &kp EQUAL       &kp FSLH        &kp ASTERISK     &kp MINUS           &kp PLUS                                &kp KP_MINUS   &kp KP_N7  &kp KP_N8  &kp KP_N9   &kp F21       &trans
